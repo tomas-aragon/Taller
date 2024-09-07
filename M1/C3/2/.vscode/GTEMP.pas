@@ -173,7 +173,7 @@ crear_subarbol(a1^.HI, a2 );
 
 unidades := 0;
 contar( a1, a1^.dato.cod, unidades);
-a2^.dato.cod := a1^.dato.cod; a2^.dato.unidades := unidades;
+a2^.dato.cod := a1^.dato.cod; a2^.dato.unidades := a1^.dato.cod; 
 
 
 crear_subarbol(a1^.HD, a2 );

@@ -1,0 +1,49 @@
+32767
+Arbol segun ISBN
+ISBN 1173; numero de prestamo 759; codigo de socio 7
+ISBN 1229; numero de prestamo 958; codigo de socio 5
+ISBN 1264; numero de prestamo 209; codigo de socio 12
+ISBN 1279; numero de prestamo 654; codigo de socio 9
+ISBN 1305; numero de prestamo 474; codigo de socio 7
+ISBN 1333; numero de prestamo 858; codigo de socio 3
+ISBN 1333; numero de prestamo 438; codigo de socio 4
+ISBN 1333; numero de prestamo 387; codigo de socio 8
+ISBN 1333; numero de prestamo 682; codigo de socio 9
+ISBN 1333; numero de prestamo 959; codigo de socio 12
+ISBN 1354; numero de prestamo 737; codigo de socio 7
+ISBN 1364; numero de prestamo 150; codigo de socio 8
+ISBN 1400; numero de prestamo 467; codigo de socio 14
+ISBN 1414; numero de prestamo 654; codigo de socio 13
+ISBN 1446; numero de prestamo 57; codigo de socio 4
+ISBN 1530; numero de prestamo 136; codigo de socio 7
+ISBN 1532; numero de prestamo 608; codigo de socio 11
+ISBN 1552; numero de prestamo 837; codigo de socio 4
+ISBN 1603; numero de prestamo 649; codigo de socio 5
+ISBN 1643; numero de prestamo 480; codigo de socio 4
+ISBN 1775; numero de prestamo 871; codigo de socio 6
+ISBN 1852; numero de prestamo 801; codigo de socio 6
+ISBN 1880; numero de prestamo 583; codigo de socio 6
+ISBN 2038; numero de prestamo 39; codigo de socio 12
+ISBN 2057; numero de prestamo 424; codigo de socio 3
+ISBN 2180; numero de prestamo 679; codigo de socio 6
+ISBN 2229; numero de prestamo 359; codigo de socio 10
+ISBN 2330; numero de prestamo 478; codigo de socio 4
+ISBN 2382; numero de prestamo 593; codigo de socio 2
+ISBN 2478; numero de prestamo 614; codigo de socio 9
+ISBN 2588; numero de prestamo 100; codigo de socio 9
+lista segun socio
+Codigo de socio 1; cantidad de prestamos 0
+Codigo de socio 2; cantidad de prestamos 1
+Codigo de socio 3; cantidad de prestamos 2
+Codigo de socio 4; cantidad de prestamos 5
+Codigo de socio 5; cantidad de prestamos 2
+Codigo de socio 6; cantidad de prestamos 4
+Codigo de socio 7; cantidad de prestamos 4
+Codigo de socio 8; cantidad de prestamos 2
+Codigo de socio 9; cantidad de prestamos 4
+Codigo de socio 10; cantidad de prestamos 1
+Codigo de socio 11; cantidad de prestamos 1
+Codigo de socio 12; cantidad de prestamos 3
+Codigo de socio 13; cantidad de prestamos 1
+Cantidad de prestamos con ISBN 2589 es 0
+Cantidad de socios que superan 3 es 4

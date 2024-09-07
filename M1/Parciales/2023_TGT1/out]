@@ -1,0 +1,47 @@
+32767
+Arbol segun ISBN
+ISBN -2203; numero de prestamo 858; codigo de socio 3
+ISBN -2203; numero de prestamo 438; codigo de socio 4
+ISBN -2203; numero de prestamo 387; codigo de socio 8
+ISBN -2203; numero de prestamo 682; codigo de socio 9
+ISBN -2203; numero de prestamo 959; codigo de socio 12
+ISBN 2735; numero de prestamo 759; codigo de socio 7
+ISBN 3299; numero de prestamo 958; codigo de socio 5
+ISBN 3642; numero de prestamo 209; codigo de socio 12
+ISBN 3800; numero de prestamo 654; codigo de socio 9
+ISBN 4052; numero de prestamo 474; codigo de socio 7
+ISBN 4547; numero de prestamo 737; codigo de socio 7
+ISBN 4642; numero de prestamo 150; codigo de socio 8
+ISBN 5004; numero de prestamo 467; codigo de socio 14
+ISBN 5149; numero de prestamo 654; codigo de socio 13
+ISBN 5467; numero de prestamo 57; codigo de socio 4
+ISBN 6310; numero de prestamo 136; codigo de socio 7
+ISBN 6325; numero de prestamo 608; codigo de socio 11
+ISBN 6527; numero de prestamo 837; codigo de socio 4
+ISBN 7033; numero de prestamo 649; codigo de socio 5
+ISBN 7435; numero de prestamo 480; codigo de socio 4
+ISBN 8759; numero de prestamo 871; codigo de socio 6
+ISBN 9527; numero de prestamo 801; codigo de socio 6
+ISBN 9804; numero de prestamo 583; codigo de socio 6
+ISBN 11391; numero de prestamo 39; codigo de socio 12
+ISBN 11582; numero de prestamo 424; codigo de socio 3
+ISBN 12806; numero de prestamo 679; codigo de socio 6
+ISBN 13299; numero de prestamo 359; codigo de socio 10
+ISBN 14306; numero de prestamo 478; codigo de socio 4
+ISBN 14832; numero de prestamo 593; codigo de socio 2
+ISBN 15784; numero de prestamo 614; codigo de socio 9
+ISBN 16889; numero de prestamo 100; codigo de socio 9
+lista segun socio
+Codigo de socio 1; cantidad de prestamos 0
+Codigo de socio 2; cantidad de prestamos 1
+Codigo de socio 3; cantidad de prestamos 2
+Codigo de socio 4; cantidad de prestamos 5
+Codigo de socio 5; cantidad de prestamos 2
+Codigo de socio 6; cantidad de prestamos 4
+Codigo de socio 7; cantidad de prestamos 4
+Codigo de socio 8; cantidad de prestamos 2
+Codigo de socio 9; cantidad de prestamos 4
+Codigo de socio 10; cantidad de prestamos 1
+Codigo de socio 11; cantidad de prestamos 1
+Codigo de socio 12; cantidad de prestamos 3
+Codigo de socio 13; cantidad de prestamos 1
