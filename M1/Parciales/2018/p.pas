@@ -1,0 +1,7 @@
+
+program p;
+
+begin
+
+
+end.

@@ -17,21 +17,20 @@ end;
 {===+++===}
 
 
-procedure insertar( var a: arbol; n: integer; var ant: arbol );
+procedure insertar( var a: arbol; n: integer  );
 begin
 
 if (a = NIL) then begin
-new( a ); a^.hi := NIL; a^.hd := NIL; a^.dato := n; a^.p := ant; 
-end else if ( n < a^.dato ) then begin
-ant := a;
-insertar( a^.hi, n, ant ) 
-end else begin
-ant := a;
-insertar( a^.hd, n, ant );
-end;
+
+new( a ); a^.hi := NIL; a^.hd := NIL; a^.dato := n;
+
+end else if ( n < a^.dato ) then insertar( a^.hi, n ) 
+
+else insertar( a^.hd, n );
+
+end; // PROC.
 
 
-end; // PROC
 
 
 procedure imprimir( a: arbol );
@@ -45,34 +44,56 @@ end; // IF
 end; // PROC.
 
 
-procedure borrar( var a: arbol; n: integer; se_puede: boolean );
+function  minimo( a: arbol ): arbol ; // MINIMO DEVUELVE EL PUNTERO A LA HOJA DE LA IZQ.
 begin
 
+if ( a^.hi <> NIL) then begin
+
+minimo := minimo( a^.hi );
+
+end else minimo := a;
+
+end; // FUNC.
 
 
-if (a = NIL) then se_puede := false
+
+procedure borrar( var a: arbol; n: integer; var se_puede: boolean );
+var aux: arbol;
+begin
+
+if (a = NIL) then se_puede := false { IF A }
 
 else if ( n < a^.dato ) then borrar( a^.hi, n, se_puede ) 
 
 else if ( n > a^.dato ) then  borrar( a^.hd, n, se_puede )
 
-else begin // ENCONTRO EL NODO
+else begin { ELSE-IF A, ENCONTRO EL NODO }
 
+se_puede := true;
 
-if (a^.hi = NIL) and (a^.hd = NIL) then dispose( a ) // CASO HOJA, TENGO QUE PODER DERREFERENCIAR AL PADRE!
+if (a^.hi = NIL) then begin { IF B, CASO TIENE SOLAM. HIJO DER. }
+aux := a;
+a := a^.hd;
+dispose( aux );
 
-else if (a^.hi = NIL) xor (a^.hd = NIL) then // CASO UN SOLO HIJO
+end else if (a^.hd = NIL)  then begin { CASO TIENE SOLAM. HIJO IZQ. }
+aux := a;
+a := a^.hi;
+dispose( aux );
 
-else if (a^.hi <> NIL) and (a^.hd <> NIL) then // CASO DOS HIJOS
+end else begin { CASO DOS HIJOS }
+aux := minimo( a^.hd );
+a^.dato := aux^.dato;
+borrar( a^.hd, aux^.dato, se_puede );
+end; { IF B }
 
-
-end; // IF
+end; { ELSE-IF A }
 
 end; // PROC
 
 
 // PROG PPAL
-var a: arbol; i, n: integer; se_puede: boolean; ant: arbol;
+var a: arbol; i, n, k: integer; se_puede: boolean;
 
 begin
 a := NIL;
@@ -80,21 +101,26 @@ a := NIL;
 for i := 1 to 13 do begin
 n := random( 101 );
 writeln( n );
-insertar( a, n, ant );
+insertar( a, n );
 end; // FOR
 
 writeln( '---+++---' );
 
 imprimir( a );
 
-//writeln( 'Ingrese un dato para borrar del arbol:' );
-// readln( k );
-// se_puede := false;
-// borrar( a, k, se_puede );
+se_puede := false;
 
-//imprimir( a );
 
-writeln( 'ant^.dato ', ant^.dato );
+writeln( 'Ingrese un dato para borrar del arbol:' );
+k := 42;
+borrar( a, k, se_puede );
+
+
+writeln();
+writeln('se pudo borrar ', k, ': ', se_puede );
+
+writeln('---+++---');
+imprimir( a );
 
 
 
