@@ -145,7 +145,6 @@ end; // PROC
 
 // AP. B
 
-
 procedure contar_prestamos_ISBN( a : arbol; ISBN: integer; var cantidad: integer  ); // B
 begin
 
@@ -155,9 +154,53 @@ contar_prestamos_ISBN( a^.hi, isbn, cantidad );
 if (a^.dato.ISBN = ISBN ) then cantidad := cantidad + 1;
 
 contar_prestamos_ISBN( a^.hd, isbn, cantidad );
-end;
+end; // IF
 
 end; // PROC
+
+
+
+{
+
+Duda:
+
+Porque a veces una función recursiva retorna basura
+cuando el mismo código en un procedimiento retorna el valor adecuado. 
+
+Ejemplo:
+contar_prestamos_ISBN_f vs. contar_prestamos_ISBN
+
+}
+
+
+function contar_prestamos_ISBN_f( a : arbol; ISBN: integer ): integer; // B
+var c: integer;
+begin
+
+if (a <> NIL) then begin
+
+
+writeln( 'Entra if funcion contar' );
+
+c := 0;
+
+if (a^.dato.ISBN = ISBN ) then begin
+c := 1;
+writeln('Incremento');
+end;
+
+
+contar_prestamos_ISBN_f := c + contar_prestamos_ISBN_f( a^.hi, ISBN ) + contar_prestamos_ISBN_f( a^.hd, ISBN );
+
+end; // IF
+
+end; // PROC
+
+
+{===+++===+++===}
+
+
+
 
 
 function contar_socios_superan_prestamos( l: lista; n: integer ): integer; // PORQUE NO FUNCA
@@ -270,10 +313,20 @@ implimirlista( l );
 
 c_ISBN := 0;
 
-ISBN := 2589;
+ISBN := 1333;
+
+writeln();
+writeln();
+
 
 contar_prestamos_ISBN( a, ISBN, c_ISBN );
 writeln( 'Cantidad de prestamos con ISBN ', ISBN, ' es ', c_ISBN );
+
+c_ISBN := 0;
+
+c_ISBN  := contar_prestamos_ISBN_f( a, ISBN );
+writeln( 'Igual pero cuento con una funcion recursiva: Cantidad de prestamos con ISBN ', ISBN, ' es ', c_ISBN );
+
 
 c_p := 3;
 c_socios := 0;
