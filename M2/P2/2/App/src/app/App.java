@@ -2,7 +2,6 @@ package app;
 
 
 import PaqueteLectura.GeneradorAleatorio;
-import java.util.HashSet;
 
 
 public class App {
