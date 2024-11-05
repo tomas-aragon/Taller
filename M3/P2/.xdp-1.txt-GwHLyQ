@@ -1,0 +1,71 @@
+programa ejemplo
+procesos
+  proceso recorrerAvenida( ES cF: numero )
+  comenzar
+    cF := 0
+    repetir 9
+      si HayFlorEnLaEsquina
+        tomarFlor
+        cF := cF + 1
+      mover
+    EnviarMensaje(cF, rFiscal)
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot fiscalizador
+  variables
+    cF: numero
+    max: numero
+    id: numero
+  comenzar
+    max := -1
+    id := 1
+    EnviarMensaje(id, ra)
+    id := id + 1
+    EnviarMensaje(id, rb)
+    id := id + 1
+    EnviarMensaje(id, rc)
+    id := id + 1
+    EnviarMensaje(id, rd)
+    id := id + 1
+    EnviarMensaje(id, re)
+    id := id + 1
+    EnviarMensaje(id, rf)    
+    repetir 6
+      RecibirMensaje(cF, *)
+      si ( cF > max )
+        max := cF
+    Informar(max)
+  fin
+  robot r1
+  variables
+    cF: numero
+  comenzar
+    recorrerAvenida(cF)
+    EnviarMensaje(cF, rFiscal)
+  fin
+variables
+  ra: r1
+  rb: r1
+  rc: r1
+  rd: r1
+  re: r1
+  rf: r1
+  rFiscal: fiscalizador
+comenzar
+  AsignarArea(ra, ciudad)
+  AsignarArea(rb, ciudad)
+  AsignarArea(rc, ciudad)
+  AsignarArea(rd, ciudad)
+  AsignarArea(re, ciudad)
+  AsignarArea(rf, ciudad)
+  AsignarArea(rFiscal, ciudad)
+  Iniciar(ra, 1,1)
+  Iniciar(rb, 2, 11)
+  Iniciar(rc, 3,21)
+  Iniciar(rd, 4,31)
+  Iniciar(re, 5,41)
+  Iniciar(rf, 6,51)
+  Iniciar(rFiscal, 2, 1)
+fin

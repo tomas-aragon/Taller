@@ -1,0 +1,77 @@
+programa ejemplo
+procesos
+  proceso recorrerEscalera( ES c: numero )
+  variables
+    alto: numero
+    cF: numero
+    cP: numero
+  comenzar
+    cF := 0
+    cP := 0
+    c := 0
+    repetir 4
+      Random(alto,1,5)
+      repetir alto
+        si HayFlorEnLaEsquina
+          tomarFlor
+          cF := cF + 1
+        si HayPapelEnLaEsquina
+          tomarPapel
+          cP := cP + 1
+        mover
+      derecha
+      mover
+      si HayFlorEnLaEsquina
+        cF := cF + 1
+        tomarFlor
+      si HayPapelEnLaEsquina
+        tomarPapel
+        cP := cP + 1
+      si (cF > cP)
+        c := c + 1
+      repetir 3
+        derecha
+
+      cP := 0
+      cF := 0
+    Informar(c)
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot Jefe
+  variables
+    c: numero
+    total: numero
+  comenzar
+    total := 0
+    repetir 3
+      RecibirMensaje(c, *)
+      total := total + c
+
+    Informar(total)
+  fin
+  robot Trabajador
+  variables
+    c: numero
+  comenzar
+    recorrerEscalera(c)
+    EnviarMensaje(c, rJefe)
+  fin
+variables
+  ra: Trabajador
+  rb: Trabajador
+  rc: Trabajador
+  rJefe: Jefe
+  
+comenzar
+  AsignarArea(ra, ciudad)
+  AsignarArea(rJefe, ciudad)
+  AsignarArea(rb, ciudad)
+  AsignarArea(rc, ciudad) 
+  Iniciar(ra, 2,1)
+  Iniciar(rb, 7,1)
+  Iniciar(rc, 12,1)
+  Iniciar(rJefe, 1, 1)
+ 
+fin
