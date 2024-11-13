@@ -1,0 +1,124 @@
+programa E4
+
+procesos
+  proceso recolectarEsquina( E Av: numero; E Ca: numero; ES cF: numero )
+  variables
+    miAv, miCa: numero
+  comenzar
+    miAv := PosAv
+    miCa := PosCa
+    BloquearEsquina(Av, Ca)
+    Pos(Av, Ca)
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cF := cF + 1
+    Pos(miAv, miCa)
+    LiberarEsquina(Av, Ca)
+  fin
+  proceso depositar
+  variables
+    miAv, miCa: numero
+  comenzar
+    miAv := PosAv
+    miCa := PosCa
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+    Pos(miAv, miCa)
+    LiberarEsquina(10,10)    
+  fin
+
+
+areas
+  esquinaR1: AreaP(1,1,1,1)
+  esquinaR2: AreaP(1,2,1,2)
+  esquinaR3: AreaP(1,3,1,3)
+  esquinaF: AreaP(1,4,1,4)
+  cuadrante: AreaC(40,40,60,60)
+  deposito: AreaC(10,10,10,10)
+robots
+  robot florero
+  variables
+    Av, Ca, c: numero
+    terminar: boolean
+  comenzar
+    terminar := F
+    mientras (terminar = F)
+      RecibirMensaje(terminar, rf)
+      si (terminar = F)
+        RecibirMensaje(Av, rf)
+        RecibirMensaje(Ca, rf)
+        recolectarEsquina(Av, Ca, c)
+      sino
+        depositar
+  fin
+  robot fiscalizador
+  variables
+    Av, Ca, id: numero
+    total, c: numero
+    terminar: boolean
+  comenzar
+    terminar := F
+    repetir 8
+      Random(Av, 40, 60)
+      Random(Ca, 40, 60)
+      Random(id, 1, 3)
+      si (id = 1)
+        EnviarMensaje (terminar, r1)
+        EnviarMensaje (Av, r1)
+        EnviarMensaje (Ca, r1)
+        Informar('Robot ', id)
+      si (id = 2)
+        EnviarMensaje (terminar, r2)
+        EnviarMensaje(Av, r2)
+        EnviarMensaje(Ca, r2)
+        Informar('Robot ', id)
+      sino
+        EnviarMensaje(terminar, r3)
+        EnviarMensaje(Av, r3)
+        EnviarMensaje(Ca, r3)
+        Informar('Robot ', id)
+    terminar := V
+    total := 0
+    c := 0
+    EnviarMensaje(terminar, r3)
+    RecibirMensaje(c, r3 )
+    total := total + c
+    EnviarMensaje(terminar, r2)
+    RecibirMensaje(c, r2 )
+    total := total + c
+    EnviarMensaje(terminar, r1)
+    RecibirMensaje(c, r1 )
+    total := total + c
+    Informar('Total flores ', total)
+  fin
+variables
+  r1: florero
+  r2: florero
+  r3: florero
+  rf: fiscalizador
+comenzar
+  AsignarArea(r1, esquinaR1)
+  AsignarArea(r1, deposito)
+  AsignarArea(r1, cuadrante)
+  
+  AsignarArea(r2, esquinaR2)
+  AsignarArea(r2, deposito)
+  AsignarArea(r2, cuadrante)
+  
+  AsignarArea(r3, esquinaR3)
+  AsignarArea(r3, deposito)
+  AsignarArea(r3, cuadrante)
+  
+  AsignarArea(rf, esquinaF)
+
+  Iniciar(r1,1,1)
+  Iniciar(r2,1,2)
+  Iniciar(r3,1,3)
+  Iniciar(rf,1,4)
+
+
+
+
+fin

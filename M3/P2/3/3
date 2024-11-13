@@ -1,0 +1,103 @@
+programa EJ3
+procesos
+  proceso juntarFlores ( E ca: numero; ES cF: numero )
+  comenzar
+    repetir 9
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cF := cF + 1
+      mover
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cF := cF + 1
+  fin
+  proceso juntarPapeles(E ca: numero; ES cP: numero )
+  comenzar
+    repetir 9
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cP := cP + 1
+      mover
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cP := cP + 1
+  fin
+areas
+  C1: AreaC(1,1, 100, 100)
+robots
+  robot PA
+  variables
+    cF : numero
+    av: numero
+  comenzar
+    derecha
+    cF := 0
+    av := 1
+    Pos(av,1)
+    repetir 2
+      juntarFlores(av, cF)
+      av := av + 20
+      Pos(av,1)
+    EnviarMensaje(cF, A2)
+  fin
+  robot SA
+  variables
+    cF: numero
+    av: numero
+  comenzar
+    av := 11
+    Pos(av, 1)
+    derecha
+    RecibirMensaje(cF, A1)
+    repetir 2
+      juntarFlores(av,cF)
+      av := av + 20
+      Pos(av, 1)
+    Informar(cF)
+  fin
+
+  robot PB
+  variables
+    cP: numero
+    av: numero
+  comenzar
+    av := 1
+    Pos(av, 5)
+    derecha
+    cP := 0
+    repetir 2
+      juntarPapeles(av, cP)
+      av := av + 20
+      Pos(av, 5)
+    EnviarMensaje(cP, B2)
+  fin
+  robot SB
+  variables
+    cP : numero
+    av: numero
+  comenzar
+    av := 11
+    derecha
+    Pos(av, 5)
+    RecibirMensaje(cP, B1)
+    repetir 2
+      juntarPapeles(av, cP)
+      av := av + 20
+      Pos(av,5)
+    Informar(cP)
+  fin
+variables
+  A1: PA
+  A2: SA
+  B1: PB
+  B2: SB
+comenzar
+  AsignarArea(A1, C1)
+  AsignarArea(A2, C1)
+  AsignarArea(B1, C1)
+  AsignarArea(B2, C1)
+  Iniciar(A1, 1, 1)
+  Iniciar(A2, 11, 1)
+  Iniciar(B1, 1, 5)
+  Iniciar(B2, 11, 5)
+fin

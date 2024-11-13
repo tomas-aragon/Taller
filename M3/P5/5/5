@@ -1,0 +1,84 @@
+programa E5
+
+
+procesos
+  proceso clienteJuntar( E cantidad: numero )
+  comenzar
+    miAv := PosAv
+    miCa := posCa
+    BloquearEsquina(100,1)
+    mientras (cF > 0)
+      tomarFlor
+      cantidad := cantidad - 1
+    Pos(miAv, miCa)
+    LiberarEsqina(100, 1)
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+  fin
+  proceso servidorDepositar( ES cantidad: numero )
+  comenzar
+    BloquearEsquina(100,1)
+    Pos(100,1)
+    repetir cantidad
+      depositarFlor
+    Pos(13,1)
+    LiberarEsqina(100,1)
+  fin
+areas
+  deposito: AreaC(100, 1, 100, 1)
+  esquinaC1: AreaP(10,1,10,1)
+  esquinaC2: AreaP(11,1,11,1)
+  esquinaC3: AreaP(12,1,12,1)
+  esquinaServidor: AreaP(13,1,13,1)
+robots
+  robot servidor
+  variables
+    id, cantidad: numero
+  comenzar
+    repetir 12
+      RecibirMensaje(id, *)
+      Random( cantidad, 1,5 )
+      servidorDepositar( cantidad )
+      si (id = 1)
+        EnviarMensaje( cantidad, c1)
+      sino
+        si (id = 2)
+          EnviarMensaje( cantidad, c2)
+        sino
+          EnviarMensaje( cantidad, c3)
+  fin
+
+  robot cliente
+  variables
+    id, cantidad: numero
+  comenzar
+    repetir 4
+      RecibirMensaje(id, rs)
+      EnviarMensaje(id, rs)
+      RecibirMensaje(cantidad, rs)
+      clienteJuntar(cantidad)
+  fin
+
+variables
+  c1: cliente
+  c2: cliente
+  c3: cliente
+  rs: servidor
+comenzar
+  AsignarArea(c1, esquinaC1)
+  AsignarArea(c1, deposito)
+
+  AsignarArea(c2, esquinaC2)
+  AsignarArea(c2, deposito)
+
+  AsignarArea(c3, esquinaC3)
+  AsignarArea(c3, deposito)
+
+  AsignarArea(rs, esquinaServidor)
+  AsignarArea(rs, deposito)
+
+  Iniciar(c1, 10, 1)
+  Iniciar(c2, 11, 1)
+  Iniciar(c3, 12, 1)
+  Iniciar(rs, 13, 1)
+fin

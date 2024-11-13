@@ -1,0 +1,88 @@
+programa E4
+procesos
+  proceso recolectarEsquina(ES cF: numero; ES cP: numero)
+  variables
+    cF: numero
+    cP: numero
+    av: numero
+    ca: numero
+  comenzar
+    cF := 0
+    cP := 0
+    Random(ca, 25,75)
+    Random(av,25,75)
+    Pos(av,ca)
+    mientras HayPapelEnLaEsquina
+      si HayPapelEnLaEsquina
+        tomarPapel
+        cP := cP + 1
+    mientras HayFlorEnLaEsquina
+      si HayFlorEnLaEsquina
+        tomarFlor
+        cF := cF + 1
+  fin
+areas
+  barrio: AreaP (25,25,75,75)
+  C1: AreaC (25,1,40,1)
+robots
+  robot jefe
+  variables
+    trabajador: numero
+    maximo: numero
+  comenzar
+    maximo := -1
+    Random(trabajador, 1,4)
+    si (trabajador = 4)
+    RecibirMensaje(cF, ta)
+      EnviarMensaje(trabajador, td)
+      RecibirMensaje(cF, td)
+      RecibirMensaje(cP, td)
+      evaluarMaximo(cF, cP, max)
+    si (trabajador = 3)
+      EnviarMensaje(trabajador, tc)
+      RecibirMensaje(cF, tc)
+      RecibirMensaje(cP, ta)
+      evaluarMaximo(cF, cP, max)
+    si (trabajador = 2)
+      EnviarMensaje(trabajador, tb)
+      RecibirMensaje(cF, tb)
+      RecibirMensaje(cP, tb)
+      evaluarMaximo(cF, cP, max)
+    si (trabajador = 1)
+      EnviarMensaje(trabajador, ta)
+      RecibirMensaje(cF, ta)
+      RecibirMensaje(cP, ta)
+      evaluarMaximo(cF, cP, max)
+  fin
+  
+  robot trabajador
+    cF: numero
+    cP: numero
+  variables
+    RecibirMensaje(trabajo, j)
+    recolectarEsquina(cF, cP)
+    EnviarMensaje(cF, j)
+    EnviarMensaje(cP, j)
+  comenzar
+  
+  fin
+variables
+  j: jefe
+  ta: trabajador
+  tb: trabajador
+  tc: trabajador
+  td: trabajador
+comenzar
+ AsignarArea(j, C1)
+ AsignarArea(ta, C1)
+ AsignarArea(tb, C1)
+ AsignarArea(tc, C1)
+ AsignarArea(td, C1)
+ AsignarArea(ta, barrio)
+ AsignarArea(tb, barrio)
+ Iniciar(j,1,1)
+ Iniciar(ta,1,25)
+ Iniciar(tb,1,30)
+ Iniciar(tc,1,35)
+ Iniciar(td,1,40)
+fin
